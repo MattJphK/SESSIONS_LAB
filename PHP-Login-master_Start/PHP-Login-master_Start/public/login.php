@@ -27,18 +27,37 @@ session_start();
 
     /* Check if login form has been submitted */
     /* isset — Determine if a variable is declared and is different than NULL*/
-    /*if(isset($_POST['Submit']))
+    if(isset($_POST['Submit']))
     {
+        try{
+            require_once('config.php');
+            $connection = new PDO($dsn, $username, $password, $options);
+            $sql = "SELECT firstname, password from users where firstname = :USER";
+            $stmt = $connection->prepare($sql);
+            $tmpUser = $_POST["Username"];
+            $statement->bindParam(parameter ':USER', &variable: $tmpUser, data_type: PDO::PARAM_STR);
+            $result = $statement->fetchAll();
+            foreach($result as $row => $rows)
+            {
+                $fname_db = $rows["firstname"];
+                $pwd_db = $rows["password"];
+
+                if( ($_POST['Username'] == $fname_db) && ($_POST['Password'] == $pwd_db) )
+                {
+                    $_SESSION["username"] = $fname_db;
+                    $_SESSION["Active"] = true;
+                    header(string: "Location: index.php");
+                    echo 'Success';
+                }
+                else
+                    echo 'Incorrect Username or Password';
+            }
+            }
+        }
 
         /* Check if the form's username and password matches */
         /* these currently check against variable values stored in config.php but later we will see how these can be checked against information in a database*/
-        /*if( ($_POST['Username'] == $Username) && ($_POST['Password'] == $Password) )
-        {
-            echo 'Success';
-        }
-        else
-            echo 'Incorrect Username or Password';
-    }*/
+
 
     if( ($_POST['Username'] == $Username) && ($_POST['Password'] == $Password) )
     {
