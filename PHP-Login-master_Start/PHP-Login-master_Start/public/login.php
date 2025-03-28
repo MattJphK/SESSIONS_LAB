@@ -1,5 +1,6 @@
-<?php require_once('../template/header.php'); ?>
-<?php require_once('config.php'); //were the username and password are stored ?>
+<?php require_once ('config.php');
+session_start();
+?>
 <link rel="stylesheet" type="text/css" href="../css/signin.css">
     <title>Sign in</title>
 </head>

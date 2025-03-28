@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php session_start();
+if($_SESSION['Active'] == false){ /* Redirects user to Login.php if not logged in. Remember, we set $_SESSION['Active'] == true in login.php*/
+    header("location:login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
