@@ -5,7 +5,7 @@ if (isset($_POST['submit'])) {
         require_once '../src/DBconnect.php';
         $new_user = array(
             "firstname" => escape($_POST['firstname']),
-            "email" => escape($_POST['email']),
+            "pass" => escape($_POST['pass']),
         );
         $sql = sprintf(
             "INSERT INTO %s (%s) values (%s)",
@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
         echo $sql . "<br>" . $error->getMessage();
     }
 }
-require "templates/header.php";
+
 if (isset($_POST['submit']) && $statement){
     echo $new_user['firstname']. ' successfully added';
 }
@@ -29,9 +29,9 @@ if (isset($_POST['submit']) && $statement){
 <form method="post">
     <label for="firstname">First Name</label>
     <input type="text" name="firstname" id="firstname">
-    <label for="email">Email Address</label>
-    <input type="text" name="email" id="email">
+    <label for="pass">Password</label>
+    <input type="text" name="pass" id="pass">
     <input type="submit" name="submit" value="Submit">
 </form>
 <a href="index.php">Back to home</a>
-<?php include "templates/footer.php"; ?>
+

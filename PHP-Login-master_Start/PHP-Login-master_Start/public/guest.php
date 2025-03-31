@@ -12,6 +12,8 @@
                 <li><a href="guest.php">Guest</a></li>
                 <li><a href="login.php">Login</a></li>
                 <li><a href="freePage.php">Free</a></li>
+                <li><a href="../install.php">install</a></li>
+                <li><a href="./registration.php">register</a></li>
             </ul>
         </nav>
         <h3 class="text-muted">GUEST PAGE</h3>

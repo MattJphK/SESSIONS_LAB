@@ -1,4 +1,4 @@
-<?php require_once ('config.php');
+<?php require_once ('../config.php');
 session_start();
 ?>
 <link rel="stylesheet" type="text/css" href="../css/signin.css">
