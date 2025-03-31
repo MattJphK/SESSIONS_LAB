@@ -20,8 +20,10 @@ session_start();
             </label>
         </div>
         <button name="Submit" value="Login" class="button" type="submit">Sign in</button>
+        <a href="guest.php">Browse As A Guest</a>
 
     </form>
+
 
     <?php
 
