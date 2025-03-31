@@ -1,10 +1,13 @@
 <?php require_once ('config.php');
 session_start();
 ?>
-<link rel="stylesheet" type="text/css" href="../css/signin.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/signin.css">
     <title>Sign in</title>
 </head>
-
 
 <body>
 <div class="container">
@@ -23,56 +26,49 @@ session_start();
 
     </form>
 
+
+
+
+
+
     <?php
 
     /* Check if login form has been submitted */
     /* isset — Determine if a variable is declared and is different than NULL*/
     if(isset($_POST['Submit']))
     {
-        try{
+        try {
             require_once('config.php');
             $connection = new PDO($dsn, $username, $password, $options);
             $sql = "SELECT firstname, password from users where firstname = :USER";
             $stmt = $connection->prepare($sql);
             $tmpUser = $_POST["Username"];
-            $statement->bindParam(parameter ':USER', &variable: $tmpUser, data_type: PDO::PARAM_STR);
-            $result = $statement->fetchAll();
-            foreach($result as $row => $rows)
-            {
+            $tmpPassword = $_POST["Password"];
+            $stmt->bindParam(':USER', $tmpUser, PDO::PARAM_STR);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            foreach ($result as $row => $rows) {
                 $fname_db = $rows["firstname"];
                 $pwd_db = $rows["password"];
 
-                if( ($_POST['Username'] == $fname_db) && ($_POST['Password'] == $pwd_db) )
-                {
+                if (($_POST['Username'] == $fname_db) && ($_POST['Password'] == $pwd_db)) {
                     $_SESSION["username"] = $fname_db;
                     $_SESSION["Active"] = true;
-                    header(string: "Location: index.php");
-                    echo 'Success';
-                }
-                else
+                    header("Location: index.php");
+                    exit;
+                } else
                     echo 'Incorrect Username or Password';
             }
             }
+            catch(PDOException $e){
+            echo $e->getMessage();
+            }
         }
-
-        /* Check if the form's username and password matches */
-        /* these currently check against variable values stored in config.php but later we will see how these can be checked against information in a database*/
-
-
-    if( ($_POST['Username'] == $Username) && ($_POST['Password'] == $Password) )
-    {
-        echo 'Success';
-        /* Success: Set session variables and redirect to protected page */
-        $_SESSION['Username'] = $Username;
-        $_SESSION['Active'] = true; //remember we can call a session what we like e.g. $_SESSION["newsession"]=$value;
-        header("location:index.php"); /* 'header() is used to redirect the browser */
-        exit; //weve just used header() to redirect to another page but we must terminate all current code so that it doesnt reun when we redirect
-    }
-    else
-        echo 'Incorrect Username or Password';
-
     ?>
 
 </div>
 </body>
 </html>
+
+
+
