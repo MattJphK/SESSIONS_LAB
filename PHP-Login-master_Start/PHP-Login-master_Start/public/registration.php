@@ -7,12 +7,14 @@ if (isset($_POST['submit'])) {
             "firstname" => escape($_POST['firstname']),
             "pass" => escape($_POST['pass']),
         );
+
         $sql = sprintf(
-            "INSERT INTO %s (%s) values (%s)",
+            "INSERT INTO %s (%s) VALUES (%s)",
             "users",
             implode(", ", array_keys($new_user)),
             ":" . implode(", :", array_keys($new_user))
         );
+
         $statement = $connection->prepare($sql);
         $statement->execute($new_user);
     } catch(PDOException $error) {
@@ -24,7 +26,7 @@ if (isset($_POST['submit']) && $statement){
     echo $new_user['firstname']. ' successfully added';
 }
 ?>
-
+<link rel="stylesheet" type="text/css" href="../css/signin.css">
 <h2>Add a user</h2>
 <form method="post">
     <label for="firstname">First Name</label>

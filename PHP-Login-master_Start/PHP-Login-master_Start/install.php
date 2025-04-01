@@ -14,7 +14,7 @@ $sql = '';
 try {
 
     $connection = new PDO("mysql:host=$host", $username, $password, $options);
-    $sql = file_get_contents("data/init.sql");
+    $sql = file_get_contents("data/users.sql");
     $connection->exec($sql);
     $connection = new PDO("mysql:host=$host;dbname=$dbname", $username,
         $password,$options);

@@ -1,10 +1,4 @@
 <?php
-
-/* Define username and password */
-$Username = "Steve";
-$Password = "pass";
-
-
 /**
  * Configuration for database connection
  *
@@ -13,9 +7,11 @@ $Password = "pass";
 $host = "localhost";
 $username = "root";
 $password = "root";
-$dbname = "session";
+$dbname = "sLab";
 $dsn = "mysql:host=$host;dbname=$dbname"; // will use later
 $options = array(
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
 );
+    $connection = new PDO($dsn, $username, $password, $options);
+
 

@@ -1,2 +1,2 @@
-use session;
-select * from users;
+use sLab;
+select * from sLab;

@@ -1,5 +1,7 @@
 <?php require_once ('../config.php');
 session_start();
+
+
 ?>
 <link rel="stylesheet" type="text/css" href="../css/signin.css">
     <title>Sign in</title>
@@ -26,34 +28,31 @@ session_start();
 
 
     <?php
-
-    /* Check if login form has been submitted */
-    /* isset — Determine if a variable is declared and is different than NULL*/
-    /*if(isset($_POST['Submit']))
+    if(isset($_POST['Submit']))
     {
+        $username = $_POST['Username'];
+        $password = $_POST['Password'];
 
-        /* Check if the form's username and password matches */
-        /* these currently check against variable values stored in config.php but later we will see how these can be checked against information in a database*/
-        /*if( ($_POST['Username'] == $Username) && ($_POST['Password'] == $Password) )
+        $sql = "SELECT * FROM users WHERE firstname = :username";
+
+        $stmt = $connection->prepare($sql);
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($user && $password == $user['pass'])
         {
             echo 'Success';
+            $_SESSION['Username'] = $user['firstname'];
+            $_SESSION['Active'] = true;
+            header("location:index.php");
+            exit;
         }
         else
+        {
             echo 'Incorrect Username or Password';
-    }*/
-
-    if( ($_POST['Username'] == $Username) && ($_POST['Password'] == $Password) )
-    {
-        echo 'Success';
-        /* Success: Set session variables and redirect to protected page */
-        $_SESSION['Username'] = $Username;
-        $_SESSION['Active'] = true; //remember we can call a session what we like e.g. $_SESSION["newsession"]=$value;
-        header("location:index.php"); /* 'header() is used to redirect the browser */
-        exit; //weve just used header() to redirect to another page but we must terminate all current code so that it doesnt reun when we redirect
+        }
     }
-    else
-        echo 'Incorrect Username or Password';
-
     ?>
 
 </div>

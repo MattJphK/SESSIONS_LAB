@@ -8,9 +8,11 @@
       <div class="header clearfix">
         <nav>
           <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="about.php">About</a></li>
-            <li><a href="contacts.php">Contact</a></li>
+              <li><a href="index.php">Home</a></li>
+              <li><a href="about.php">About</a></li>
+              <li><a href="contacts.php">Contact</a></li>
+              <li><a href="login.php">Login</a></li>
+              <li><a href="registration.php">Register</a></li>
           </ul>
         </nav>
         <h3 class="text-muted">PHP Login exercise - Contacts page</h3>
