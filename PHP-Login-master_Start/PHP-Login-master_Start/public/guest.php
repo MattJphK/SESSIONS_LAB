@@ -13,6 +13,7 @@
                 <li><a href="login.php">Login</a></li>
                 <li><a href="freePage.php">Free</a></li>
                 <li><a href="./registration.php">register</a></li>
+                <li><a href="./read.php">Show Users</a></li>
             </ul>
         </nav>
         <h3 class="text-muted">GUEST PAGE</h3>

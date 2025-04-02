@@ -14,6 +14,7 @@
             <li><a href="contacts.php">Contact</a></li>
               <li><a href="login.php">Login</a></li>
               <li><a href="registration.php">Register</a></li>
+              <li><a href="./read.php">Show Users</a></li>
           </ul>
         </nav>
         <h3 class="text-muted">PHP Login exercise - Home page</h3>
